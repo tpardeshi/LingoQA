@@ -7,6 +7,8 @@
 /.bundle
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/schema.rb
+db/seeds.rb
 /log/*
 /tmp/*
 !/log/.keep
@@ -20,6 +22,11 @@ db/schema.rb
 config/settings.yaml
 config/database.yml
 config/ignored_environments.yml
+config/credentials.yml
+config/environments/*
+config/initializers/*
+config/puma.rb
+config/storage.yml
 bundler.d/*.local.rb
 .rbenv*
 .rvmrc*
@@ -34,6 +41,10 @@ coverage/
 tags
 _build
 .env*
-.vendor/
-vendor/ruby
-vendor/bundle*
+vendor/*
+app/jobs/*
+app/mailers/*
+app/channels/*
+bin/*
+Rakefile
+config.ru
