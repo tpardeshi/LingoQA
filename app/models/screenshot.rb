@@ -2,6 +2,7 @@
 
 # The Screenshot class represents the screenshot model
 class Screenshot < ApplicationRecord
-  belongs_to :locales
-  belongs_to :versions
+  # Screenshot reference locale and version
+  belongs_to :locale
+  belongs_to :version
 end

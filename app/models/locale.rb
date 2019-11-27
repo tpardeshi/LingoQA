@@ -2,6 +2,8 @@
 
 # The Locale class represents the locale model
 class Locale < ApplicationRecord
+  # Screenshots references a locale
   has_many :screenshots
-  belongs_to :products
+  # Locale reference a product
+  belongs_to :product
 end
