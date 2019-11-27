@@ -2,6 +2,8 @@
 
 # The Version class represents the version model
 class Version < ApplicationRecord
+  # Screenshots references a version
   has_many :screenshots
-  belongs_to :products
+  # Version reference a product
+  belongs_to :product
 end
