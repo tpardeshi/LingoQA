@@ -26,6 +26,7 @@ config/credentials.yml
 config/environments/*
 config/initializers/*
 config/puma.rb
+config/storage.yml
 bundler.d/*.local.rb
 .rbenv*
 .rvmrc*
