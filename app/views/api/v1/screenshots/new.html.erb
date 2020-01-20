@@ -1,0 +1,17 @@
+<h1>Form</h1>
+<%= form_with(model: @screenshot, url: api_v1_screenshots_path, local: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :LocaleID %>
+  <%= f.text_field :locale_id %>
+
+	<%= f.label :VersionsID %>
+  <%= f.text_field :version_id %>
+
+  <%= f.label :Image %>
+  <%= f.file_field :images , direct_upload: true, multiple: true %>
+
+
+  <%= f.submit "Create" %>
+<% end %>
