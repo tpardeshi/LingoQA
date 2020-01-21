@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       get 'screenshots/new', to: 'screenshots#new'
       get 'screenshots/show', to: 'screenshots#show'
-      resources :screenshots
+      resources :screenshots, :products, :versions, :locales
     end
   end
 end

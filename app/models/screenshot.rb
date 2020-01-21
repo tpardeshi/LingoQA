@@ -5,5 +5,5 @@ class Screenshot < ApplicationRecord
   # Screenshot reference locale and version
   belongs_to :locale
   belongs_to :version
-  has_one_attached :image
+  has_many_attached :images
 end
