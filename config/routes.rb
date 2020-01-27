@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   match ':controller(/:action(/:id))', :via => [:get, :post]
   namespace 'api' do
     namespace 'v1' do
-      post 'screenshots/create', to: 'screenshots#create'
+      post 'screenshots/new', to: 'screenshots#new'
       resources :screenshots
     end
   end

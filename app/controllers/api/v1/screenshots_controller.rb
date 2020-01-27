@@ -6,7 +6,11 @@ module Api
     class ScreenshotsController < ApplicationController
       def index
         @screenshot = Screenshot.all
-        render json: @screenshot
+        render json: @screenshot, include: :images
+      end
+
+      def new
+        @screenshot = Screenshot.new
       end
 
       def create
@@ -20,16 +24,9 @@ module Api
         end
       end
 
-      def show
-        @screenshot = Screenshot.all.with_attached_image
-          render json: @screenshot.map { |s|
-            s.as_json.merge({ image: url_for(s.image) })
-        }
-      end
-
       private
       def screenshot_params
-        params.permit(:name, :locale_id, :version_id, :image)
+        params.permit(:name, :locale_id, :version_id, images: [])
       end
     end
   end
