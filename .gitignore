@@ -7,8 +7,6 @@
 /.bundle
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/db/schema.rb
-db/seeds.rb
 /log/*
 /tmp/*
 !/log/.keep
@@ -18,13 +16,10 @@ db/seeds.rb
 .byebug_history
 /config/master.key
 Gemfile.lock
-db/schema.rb
 config/settings.yaml
 config/database.yml
 config/ignored_environments.yml
 config/credentials.yml
-config/environments/*
-config/initializers/*
 config/puma.rb
 bundler.d/*.local.rb
 .rbenv*
@@ -45,5 +40,3 @@ app/jobs/*
 app/mailers/*
 app/channels/*
 bin/*
-Rakefile
-config.ru
