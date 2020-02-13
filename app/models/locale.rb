@@ -4,6 +4,4 @@
 class Locale < ApplicationRecord
   # Screenshots references a locale
   has_many :screenshots
-  # Locale reference a product
-  belongs_to :product
 end

@@ -4,5 +4,4 @@
 class Product < ApplicationRecord
   # Versions and locales references a Product
   has_many :versions
-  has_many :locales
 end
