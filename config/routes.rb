@@ -7,18 +7,19 @@ Rails.application.routes.draw do
       resources :products
       resources :locales
       resources :product_versions
+      resources :screenshots
 
       resources :products do
         resources :product_versions
       end
 
-      resources :product_versions, :locales do
+      resources :product_versions do
         resources :screenshots
       end
 
-      # resources :locales do
-      #   resources :screenshots
-      # end
+      resources :locales do
+        resources :screenshots
+      end
     end
   end
 end
