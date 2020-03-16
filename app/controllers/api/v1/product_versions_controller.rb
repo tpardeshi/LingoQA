@@ -2,11 +2,11 @@
 
 module Api
   module V1
-    # Controller methods for version model
-    class VersionsController < ApplicationController
+    # Controller methods for product_version model
+    class ProductVersionsController < ApplicationController
       before_action :get_products_id
       def index
-        @versions = @product.versions
+        @versions = @product.product_versions
         render json: @versions
       end
 

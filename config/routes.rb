@@ -5,13 +5,20 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :products
+      resources :locales
+      resources :product_versions
+
       resources :products do
-        resources :versions do
-          resources :locales do
-            resources :screenshots
-          end
-        end
+        resources :product_versions
       end
+
+      resources :product_versions, :locales do
+        resources :screenshots
+      end
+
+      # resources :locales do
+      #   resources :screenshots
+      # end
     end
   end
 end

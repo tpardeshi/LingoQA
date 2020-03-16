@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_061039) do
+ActiveRecord::Schema.define(version: 2020_03_03_100249) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -33,41 +33,39 @@ ActiveRecord::Schema.define(version: 2019_12_10_061039) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "locales", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "locales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "code"
+    t.string "language"
+  end
+
+  create_table "product_versions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "product_id"
-    t.index ["product_id"], name: "index_locales_on_product_id"
+    t.index ["product_id"], name: "index_product_versions_on_product_id"
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "screenshots", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "screenshots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "locale_id"
-    t.bigint "version_id"
+    t.bigint "product_version_id"
     t.index ["locale_id"], name: "index_screenshots_on_locale_id"
-    t.index ["version_id"], name: "index_screenshots_on_version_id"
-  end
-
-  create_table "versions", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "product_id"
-    t.index ["product_id"], name: "index_versions_on_product_id"
+    t.index ["product_version_id"], name: "index_screenshots_on_product_version_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "locales", "products"
+  add_foreign_key "product_versions", "products"
   add_foreign_key "screenshots", "locales"
-  add_foreign_key "screenshots", "versions"
-  add_foreign_key "versions", "products"
+  add_foreign_key "screenshots", "product_versions"
 end
