@@ -9,7 +9,6 @@ module Api
         @versions = @product.product_versions
         render json: @versions
       end
-
       private
       def get_products_id
         @product = Product.find(params[:product_id])
