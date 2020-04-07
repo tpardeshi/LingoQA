@@ -14,11 +14,8 @@
 /storage/*
 !/storage/.keep
 .byebug_history
-/config/master.key
-Gemfile.lock
 config/settings.yaml
 config/ignored_environments.yml
-config/credentials.yml
 config/puma.rb
 bundler.d/*.local.rb
 .rbenv*
@@ -38,3 +35,4 @@ vendor/*
 app/jobs/*
 app/mailers/*
 app/channels/*
+/config/credentials/*.key
