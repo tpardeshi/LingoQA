@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       resources :products , only: [:index] do
         resources :product_versions, only: [:index]
       end
+      resources :product_versions, only: [:index] do
+        resources :screenshots
+      end
     end
   end
 end

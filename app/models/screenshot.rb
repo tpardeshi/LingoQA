@@ -6,4 +6,5 @@ class Screenshot < ApplicationRecord
   belongs_to :locale
   belongs_to :product_version
   validates :name, presence: true
+  has_many_attached :images
 end
