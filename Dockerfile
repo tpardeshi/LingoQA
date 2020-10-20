@@ -12,13 +12,16 @@ WORKDIR lingoqa
 
 RUN sed -i s/"ruby '2.6.3'"/"ruby '2.7.0'"/ Gemfile && \
     bundle update --bundler && \
-    echo '123456677956fgdsfg675g54g67uy5re' > config/credentials/development.key && \
+    # Enter the development key for execution
+    echo 'Enter the key' > config/credentials/development.key && \
     sed -i s/"\/var\/lib\/mysql\/mysql.sock"/"\/var\/run\/mysqld\/mysqld.sock"/ config/database.yml && \
     /etc/rc2.d/S01mysql start && \
     bundle exec rake db:create && \
-    bundle exec rake db:schema:load
+    bundle exec rake db:schema:load && \
+    chmod -R 777 tmp/
 
-EXPOSE 3000
+
+EXPOSE 8080
 
 ENTRYPOINT ["rails"]
-CMD ["s", "--binding=0.0.0.0"]
+CMD ["s"]
