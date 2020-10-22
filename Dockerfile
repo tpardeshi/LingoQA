@@ -23,5 +23,7 @@ RUN sed -i s/"ruby '2.6.3'"/"ruby '2.7.0'"/ Gemfile && \
 
 EXPOSE 8080
 
+ENV PORT=8080
+
 ENTRYPOINT ["rails"]
-CMD ["s"]
+CMD ["s", "--binding=0.0.0.0"]

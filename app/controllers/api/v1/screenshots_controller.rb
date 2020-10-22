@@ -28,7 +28,7 @@ module Api
       end
 
       def screenshots_json(screenshots)
-        screenshots.as_json.merge(Images: screenshots.images.map { |image| url_for(image) })
+        screenshots.as_json.merge(images: screenshots.images.map { |image| url_for(image) })
       end
 
       def set_product_version
