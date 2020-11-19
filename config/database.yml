@@ -9,15 +9,19 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+<% user = ENV.key?("MYSQL_ADMIN_PASSWORD") ? "root" : ENV["MYSQL_USER"] %>
+<% password = ENV.key?("MYSQL_ADMIN_PASSWORD") ? ENV["MYSQL_ADMIN_PASSWORD"] : ENV["MYSQL_PASSWORD"] %>
+<% db_service = ENV.fetch("DATABASE_SERVICE_NAME","").upcase %>
+
 default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['USERNAME'] %>
-  password: <%= ENV['PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
-  port: <%= ENV['PORT'] %>
-  host: <%= ENV['HOST'] %>
+  username: <%= user %>
+  password: <%= password %>
+  #socket: /var/lib/mysql/mysql.sock
+  host: <%= ENV["#{db_service}_SERVICE_HOST"] %>
+  port: <%= ENV["#{db_service}_SERVICE_PORT"] %>
 
 development:
   <<: *default
