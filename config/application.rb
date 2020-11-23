@@ -37,7 +37,7 @@ module Lingoqa
     # Skip views, helpers and assets when generating a new resource.
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins Rails.application.credentials.allowed_origins
+        origins '*'
         resource '*', :methods => [:get, :post]
       end
     end
